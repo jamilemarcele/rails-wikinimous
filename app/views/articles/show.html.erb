@@ -1,19 +1,15 @@
-<h1>Wikinimous - Article</h1>
+<h1 class="mb-3"><%= @article.title %></h1>
 
-<h3><%= @article.title %>
-  <%= link_to edit_article_path do %>
-    <i class="far fa-edit"></i>
-  <% end %>
-  <%= link_to article_path(@article),
-              method: :delete,
-              data: { confirm: "Are you sure?" } do %>
-    <i class="fas fa-trash-alt"></i>
-  <% end %>
-</h3>
+<blockquote>
+  <p><%= @article.content %></p>
+</blockquote>
 
-<p>
-  <%= @article.content %>
-  <%= link_to articles_path do %>
-    <i class="fas fa-reply-all"></i>
-  <% end %>
-</p>
+<%= link_to article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' do %>
+  <i class="far fa-trash-alt"></i> Delete
+<% end %>
+
+<%= link_to edit_article_path(@article), class: 'btn btn-warning' do %>
+  Edit
+<% end %>
+
+<%= link_to "See all articles", articles_path, class: 'link-all-articles' %>
